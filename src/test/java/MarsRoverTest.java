@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +11,27 @@ class MarsRoverTest {
         String command = "R";
 
         String result = marsRover.execute(command);
+
+        assertEquals(expectedCoordinates, result);
+    }
+
+    @Test
+    void returns_easterly_when_given_twice_right_command() {
+        MarsRover marsRover = new MarsRover();
+        String expectedCoordinates = "0:0:S";
+        String commands = "RR";
+
+        String result = marsRover.execute(commands);
+
+        assertEquals(expectedCoordinates, result);
+    }
+    @Test
+    void returns_easterly_when_given_three_right_command() {
+        MarsRover marsRover = new MarsRover();
+        String expectedCoordinates = "0:0:W";
+        String commands = "RRR";
+
+        String result = marsRover.execute(commands);
 
         assertEquals(expectedCoordinates, result);
     }
