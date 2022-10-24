@@ -16,7 +16,13 @@ public class MarsRover {
             rightTurns += 1;
         }
 
+        wrapAround();
+
         return formatPosition();
+    }
+
+    private void wrapAround() {
+        rightTurns %= 4;
     }
 
     private String formatPosition() {
