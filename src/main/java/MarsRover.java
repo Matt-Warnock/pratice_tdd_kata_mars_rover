@@ -1,30 +1,25 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MarsRover {
 
-    private String direction = "N";
     private String coordinates = "0:0";
+    private List<String> compass = Arrays.asList("N", "E", "S", "W");
+    private int rightTurns = 0;
 
     public String execute(String commands) {
         String[] commandsList = commands.split("");
 
-        if (commands.equals("R")) {
-            direction = "E";
-        }
-
-        if (commands.equals("RR")) {
-            direction = "S";
-        }
-
-        if (commands.equals("RRR")) {
-            direction = "W";
+        for(String command : commandsList) {
+            rightTurns += 1;
         }
 
         return formatPosition();
     }
 
     private String formatPosition() {
-        return coordinates + ":" + direction;
+        return coordinates + ":" + compass.get(rightTurns);
     }
 }
